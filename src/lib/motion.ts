@@ -1,13 +1,13 @@
-﻿export const motionTokens = {
+export const motionTokens = {
   duration: {
     fast: 0.35,
     medium: 0.7,
     slow: 1.0,
   },
   ease: {
-    luxury: [0.22, 1, 0.36, 1],
-    soft: [0.25, 0.1, 0.25, 1],
-    glide: [0.16, 1, 0.3, 1],
+    luxury: [0.22, 1, 0.36, 1] as const,
+    soft: [0.25, 0.1, 0.25, 1] as const,
+    glide: [0.16, 1, 0.3, 1] as const,
   },
   stagger: {
     small: 0.06,

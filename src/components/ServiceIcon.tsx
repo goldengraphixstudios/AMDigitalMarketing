@@ -1,4 +1,4 @@
-﻿type IconName = "funnel" | "crm" | "web" | "social" | "ads" | "admin";
+export type IconName = "funnel" | "crm" | "web" | "social" | "ads" | "admin";
 
 type ServiceIconProps = {
   name: IconName;

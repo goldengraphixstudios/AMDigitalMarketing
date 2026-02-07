@@ -16,7 +16,6 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
     const lenis = new Lenis({
       lerp: 0.08,
       smoothWheel: true,
-      smoothTouch: false,
     });
 
     let rafId = 0;

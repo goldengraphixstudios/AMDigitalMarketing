@@ -1,4 +1,6 @@
-﻿export const brand = {
+import type { IconName } from "@/components/ServiceIcon";
+
+export const brand = {
   name: "AM Digital Marketing",
   descriptor: "CRM, Funnels & Digital Marketing Strategy",
   ceo: "Angelyn Mediana",
@@ -124,7 +126,12 @@ export const services = [
       "SOP creation and documentation",
     ],
   },
-];
+] satisfies {
+  title: string;
+  icon: IconName;
+  summary: string;
+  items: string[];
+}[];
 
 export const serviceHighlights = services.slice(0, 3).map((service) => ({
   title: service.title,

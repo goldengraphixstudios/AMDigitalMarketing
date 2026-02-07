@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import * as React from "react";
+import type { MotionValue } from "framer-motion";
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useHasMounted } from "@/lib/useHasMounted";
 import { cn } from "@/lib/utils";
@@ -16,16 +17,18 @@ type ParallaxLayerProps = {
   depth?: number;
 };
 
-const ParallaxContext = React.createContext<{
-  x: ReturnType<typeof useMotionValue>;
-  y: ReturnType<typeof useMotionValue>;
-  scrollY: ReturnType<typeof useMotionValue>;
+type ParallaxContextValue = {
+  x: MotionValue<number>;
+  y: MotionValue<number>;
+  scrollY: MotionValue<number>;
   reduce: boolean;
-} | null>(null);
+};
+
+const ParallaxContext = React.createContext<ParallaxContextValue | null>(null);
 
 export function ParallaxGroup({ children, className }: ParallaxGroupProps) {
   const ref = React.useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = Boolean(useReducedMotion());
   const mounted = useHasMounted();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -81,19 +84,27 @@ export function ParallaxLayer({ children, className, depth = 0.2 }: ParallaxLaye
   const springX = useSpring(x, { stiffness: 120, damping: 20 });
   const springY = useSpring(y, { stiffness: 120, damping: 20 });
   const scrollShift = useTransform(scrollY, (value) => value * depth * -0.08);
-  const combinedY = useTransform([springY, scrollShift], ([mouseY, scroll]) => mouseY + scroll);
-  const combinedX = useTransform(springX, (val) => val * depth);
+  const mouseShiftX = useTransform(springX, (val) => val * depth);
+  const mouseShiftY = useTransform(springY, (val) => val * depth);
 
   return (
     <motion.div
       className={cn("absolute inset-0", className)}
       style={{
-        x: reduce ? 0 : combinedX,
-        y: reduce ? 0 : combinedY,
+        y: reduce ? 0 : scrollShift,
         willChange: "transform",
       }}
     >
-      {children}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          x: reduce ? 0 : mouseShiftX,
+          y: reduce ? 0 : mouseShiftY,
+          willChange: "transform",
+        }}
+      >
+        {children}
+      </motion.div>
     </motion.div>
   );
 }
