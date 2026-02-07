@@ -67,7 +67,7 @@ function HeroVisual() {
 
 export function HeroCinematic() {
   return (
-    <section className="relative isolate min-h-screen overflow-hidden pb-6 pt-10">
+    <section className="relative isolate min-h-[70vh] overflow-hidden pb-4 pt-8 lg:min-h-[75vh]">
       <ParallaxGroup className="relative min-h-full">
         <ParallaxLayer depth={0.12} className="absolute inset-0 z-0">
           <div className="hero-mesh" />
