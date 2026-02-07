@@ -4,7 +4,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 
 export function Proof() {
   return (
-    <section className="section">
+    <section className="section pt-12 lg:pt-14">
       <AnimatedSection className="container-lux space-y-10">
         <Reveal className="flex flex-wrap items-center justify-between gap-6">
           <div className="space-y-2">
