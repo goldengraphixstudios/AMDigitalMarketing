@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   },
   basePath: "/AMDigitalMarketing",
   assetPrefix: "/AMDigitalMarketing",
+  trailingSlash: true,
 };
 
 export default nextConfig;
