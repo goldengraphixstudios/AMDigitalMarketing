@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:e2e": "playwright test",
-    "deploy": "next build && gh-pages -d out"
+    "deploy": "next build && node scripts/postexport.cjs && gh-pages -d out --dotfiles"
   },
   "dependencies": {
     "clsx": "^2.1.1",

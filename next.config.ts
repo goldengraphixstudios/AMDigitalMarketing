@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath: "/AMDigitalMarketing",
-  assetPrefix: "/AMDigitalMarketing",
+  assetPrefix: "/AMDigitalMarketing/",
   trailingSlash: true,
 };
 
