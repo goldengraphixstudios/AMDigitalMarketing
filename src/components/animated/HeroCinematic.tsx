@@ -67,16 +67,16 @@ function HeroVisual() {
 
 export function HeroCinematic() {
   return (
-    <section className="relative isolate overflow-hidden pb-12 pt-10">
-      <ParallaxGroup className="relative">
-        <ParallaxLayer depth={0.12} className="absolute inset-0">
+    <section className="relative isolate min-h-screen overflow-hidden pb-12 pt-10">
+      <ParallaxGroup className="relative min-h-full">
+        <ParallaxLayer depth={0.12} className="absolute inset-0 z-0">
           <div className="hero-mesh" />
           <GradientBlobs />
         </ParallaxLayer>
-        <ParallaxLayer depth={0.2} className="absolute inset-x-0 bottom-0 pointer-events-none">
+        <ParallaxLayer depth={0.2} className="absolute inset-x-0 bottom-0 z-0 pointer-events-none">
           <WaveRibbon className="opacity-45" />
         </ParallaxLayer>
-        <ParallaxLayer depth={0.35} className="relative">
+        <ParallaxLayer depth={0.35} position="relative" className="relative z-10">
           <div className="container-lux grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7 space-y-6">
               <AnimatedSection className="text-xs uppercase tracking-[0.4em] text-foreground/60">

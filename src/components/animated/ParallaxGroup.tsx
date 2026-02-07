@@ -15,6 +15,7 @@ type ParallaxLayerProps = {
   children: React.ReactNode;
   className?: string;
   depth?: number;
+  position?: "absolute" | "relative";
 };
 
 type ParallaxContextValue = {
@@ -70,7 +71,12 @@ export function ParallaxGroup({ children, className }: ParallaxGroupProps) {
   );
 }
 
-export function ParallaxLayer({ children, className, depth = 0.2 }: ParallaxLayerProps) {
+export function ParallaxLayer({
+  children,
+  className,
+  depth = 0.2,
+  position = "absolute",
+}: ParallaxLayerProps) {
   const ctx = React.useContext(ParallaxContext);
   const fallbackX = useMotionValue(0);
   const fallbackY = useMotionValue(0);
@@ -87,9 +93,11 @@ export function ParallaxLayer({ children, className, depth = 0.2 }: ParallaxLaye
   const mouseShiftX = useTransform(springX, (val) => val * depth);
   const mouseShiftY = useTransform(springY, (val) => val * depth);
 
+  const baseClass = position === "absolute" ? "absolute inset-0" : "relative";
+
   return (
     <motion.div
-      className={cn("absolute inset-0", className)}
+      className={cn(baseClass, className)}
       style={{
         y: reduce ? 0 : scrollShift,
         willChange: "transform",
