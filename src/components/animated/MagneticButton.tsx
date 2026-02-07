@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const baseStyles =
@@ -22,25 +22,6 @@ export function MagneticButton({
   variant = "primary",
 }: MagneticButtonProps) {
   const reduce = useReducedMotion();
-  const ref = React.useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 200, damping: 20 });
-  const springY = useSpring(y, { stiffness: 200, damping: 20 });
-
-  const handleMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (reduce || !ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const relX = (event.clientX - rect.left) / rect.width - 0.5;
-    const relY = (event.clientY - rect.top) / rect.height - 0.5;
-    x.set(relX * 18);
-    y.set(relY * 18);
-  };
-
-  const handleLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
 
   const content = (
     <span
@@ -87,11 +68,21 @@ export function MagneticButton({
 
   return (
     <motion.div
-      ref={ref}
-      style={{ x: reduce ? 0 : springX, y: reduce ? 0 : springY }}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
       className="inline-flex"
+      initial={reduce ? undefined : { opacity: 0, y: 10, scale: 0.97 }}
+      animate={reduce ? undefined : { opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      whileHover={
+        reduce
+          ? undefined
+          : {
+              scale: 1.04,
+              boxShadow:
+                variant === "primary"
+                  ? "0 16px 38px rgba(255, 48, 109, 0.25)"
+                  : "0 12px 30px rgba(198, 140, 220, 0.22)",
+            }
+      }
     >
       {href ? (
         <Link href={href} aria-label={typeof children === "string" ? children : undefined}>
