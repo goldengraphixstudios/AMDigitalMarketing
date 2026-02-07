@@ -1,4 +1,4 @@
-:HL["/AMDigitalMarketing/_next/static/chunks/4f3757380217f18c.css","style"]
+:HL["/AMDigitalMarketing/_next/static/chunks/151586ab8a1ecb65.css","style"]
 :HL["/AMDigitalMarketing/_next/static/media/01e4147cff8141ee-s.p.7787e134.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/AMDigitalMarketing/_next/static/media/09fd331868a74310-s.p.e287d451.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"buildId":"N9S1AMpgUDlIWeoQfvwxR","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"services","paramType":null,"paramKey":"services","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"t6USB67OI81DsHDzHz9dB","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"services","paramType":null,"paramKey":"services","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
